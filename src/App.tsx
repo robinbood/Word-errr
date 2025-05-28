@@ -3,25 +3,30 @@ import "./App.css";
 
 const App = () => {
   const [mes, SetMes] = useState<string>("");
-  const [wordFrequency, setWordFrequency] = useState<Record<string, number>>({});
- 
-  const onClick = () => { 
-    const clean = mes.split(" ").filter(word => word.length > 0);
-    const frequency = clean.reduce((acc, curr) => {
-      acc[curr] = (acc[curr] || 0) + 1;
+  const [wordFrequency, setWordFrequency] = useState<Record<string, number>>(
+    {}
+  );
+
+  const onClick = () => {
+    const clean = mes.split(" ").map(word => word.toLowerCase().trim()).filter((word) => word.length > 0)
+    const frequency = clean.reduce((acc, i) => {
+      acc[i] = (acc[i] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
     setWordFrequency(frequency);
-  }
+  };
 
   return (
-    <div className="App" style={{
-      display: "flex",
-      justifyContent: "flex-start",
-      alignItems: "center",
-      minHeight: "100vh",
-      padding: "20px",
-    }}>
+    <div
+      className="App"
+      style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
       <div>
         <textarea
           onChange={({ target }) => SetMes(target.value)}
@@ -46,19 +51,37 @@ const App = () => {
           spellCheck={true}
           autoComplete="off"
         />
-        <button onClick={onClick} style={{width:"7em", border:"20px solid red",borderRadius:"40px"}}><pre>CHECK</pre></button>
-        <table style={{margin: "20px", borderCollapse: "collapse"}}>
+        <button
+          onClick={onClick}
+          style={{
+            width: "7em",
+            border: "20px solid red",
+            borderRadius: "40px",
+            margin:"30px"
+          }}
+        >
+          <pre>CHECK</pre>
+        </button>
+        <table style={{ margin: "20px", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th style={{border: "1px solid black", padding: "8px"}}>Word</th>
-              <th style={{border: "1px solid black", padding: "8px"}}>Frequency</th>
+              <th style={{ border: "1px solid black", padding: "8px" }}>
+                Word
+              </th>
+              <th style={{ border: "1px solid black", padding: "8px" }}>
+                Frequency
+              </th>
             </tr>
           </thead>
           <tbody>
             {Object.entries(wordFrequency).map(([word, freq]) => (
               <tr key={word}>
-                <td style={{border: "1px solid black", padding: "8px"}}>{word}</td>
-                <td style={{border: "1px solid black", padding: "8px"}}>{freq}</td>
+                <td style={{ border: "1px solid black", padding: "8px" }}>
+                  {word}
+                </td>
+                <td style={{ border: "1px solid black", padding: "8px" }}>
+                  {freq}
+                </td>
               </tr>
             ))}
           </tbody>
