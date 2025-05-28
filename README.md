@@ -1,0 +1,1 @@
+<h1><pre><u>A word frequency checker that's also memory efficient cuz it uses Array.reduce()</u></pre></h1>
