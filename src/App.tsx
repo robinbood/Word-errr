@@ -69,7 +69,7 @@ const App = () => {
         >
           CHECK
         </button>
-        <table style={{ margin: "20px", borderCollapse: "collapse",position:"absolute",right:"20px",top:"30px" }}>
+        <table style={{ margin: "20px", borderCollapse: "collapse",position:"absolute",right:"20px",top:"30px",backgroundColor:"orangered",fontFamily:"fantasy",fontSize:"1.5em" }}>
           <thead>
             <tr>
               <th style={{ border: "1px solid black", padding: "8px" }}>
@@ -80,7 +80,7 @@ const App = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {Object.entries(wordFrequency)
               .sort(([, a], [, b]) => b - a)
               .map(([word, freq]) => (
