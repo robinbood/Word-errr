@@ -74,16 +74,18 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(wordFrequency).map(([word, freq]) => (
+            {Object.entries(wordFrequency)
+              .sort(([, a], [, b]) => b - a)
+              .map(([word, freq]) => (
               <tr key={word}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {word}
+                {word}
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {freq}
+                {freq}
                 </td>
               </tr>
-            ))}
+              ))}
           </tbody>
         </table>
       </div>
