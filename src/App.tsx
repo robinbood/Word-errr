@@ -8,8 +8,8 @@ const App = () => {
   );
 
   const onClick = () => {
-    const clean = mes.split(" ").map(word => word.toLowerCase().trim()).filter((word) => word.length > 0)
-    const frequency = clean.reduce((acc, i) => {
+    const clean: Array<string> = mes.split(" ").map(word => word.toLowerCase().trim()).filter((word) => word.length > 0)
+    const frequency : Record<string,number> = clean.reduce((acc, i) => {
       acc[i] = (acc[i] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
@@ -45,8 +45,10 @@ const App = () => {
             boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
             outline: "none",
             transition: "border-color 0.3s ease",
+            display:"flex",
+            justifyContent:"center"
           }}
-          value={mes}
+          value={mes }
           placeholder="Enter your text here..."
           spellCheck={true}
           autoComplete="off"
@@ -54,15 +56,20 @@ const App = () => {
         <button
           onClick={onClick}
           style={{
-            width: "7em",
-            border: "20px solid red",
+            width: "9em",
+            border: "10px solid red",
             borderRadius: "40px",
-            margin:"30px"
+            margin: "10px",
+            fontSize: "20px",
+            fontFamily: "monospace",
+            fontWeight: "bolder",
+            height: "auto",
+            padding: "10px"
           }}
         >
-          <pre>CHECK</pre>
+          CHECK
         </button>
-        <table style={{ margin: "20px", borderCollapse: "collapse" }}>
+        <table style={{ margin: "20px", borderCollapse: "collapse",position:"absolute",right:"20px",top:"30px" }}>
           <thead>
             <tr>
               <th style={{ border: "1px solid black", padding: "8px" }}>

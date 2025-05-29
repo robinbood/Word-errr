@@ -11,7 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: inherit;
+  overflow-y: hidden;
   object-fit: cover;
 }
 
@@ -30,6 +30,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #3e94df;
+  padding: 30px;
 }
 
 h1 {
